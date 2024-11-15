@@ -80,7 +80,11 @@ def main():
                     id_fornecedor = int(input("ID do fornecedor: "))
                     mostrar_fornecedor(id_fornecedor)
                 elif sub_choice == '3':
-                    pass
+                    id_fornecedor = int(input("ID do fornecedor a atualizar: "))
+                    nome = input("Novo nome (deixe em branco para não alterar): ")
+                    telefone = input("Novo telefone (deixe em branco para não alterar): ")
+
+                    atualizar_fornecedor(id_fornecedor, nome or None, telefone or None)
                 elif sub_choice == '4':
                     pass
                 elif sub_choice == '5':

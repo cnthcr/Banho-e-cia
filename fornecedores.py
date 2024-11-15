@@ -36,3 +36,37 @@ def mostrar_fornecedor(id_fornecedor):
         if connection:
             cursor.close()
             connection.close()
+
+
+def atualizar_fornecedor(id_fornecedor, nome=None, telefone=None):
+    """Atualiza as informações de um fornecedor existente."""
+    connection = connect_to_database()
+    try:
+        cursor = connection.cursor()
+
+        updates = []
+        values = []
+
+        if nome:
+            updates.append("nome = %s")
+            values.append(nome)
+        if telefone:
+            updates.append("telefone = %s")
+            values.append(telefone)
+
+        if not updates:
+            print("Nenhum campo para atualizar.")
+            return
+
+        query = f"UPDATE fornecedores SET {', '.join(updates)} WHERE id = %s"
+        values.append(id_fornecedor)
+
+        cursor.execute(query, tuple(values))
+        connection.commit()
+        print("Fornecedor atualizado com sucesso.")
+    except Exception as e:
+        print(f"Erro ao atualizar fornecedor: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
