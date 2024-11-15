@@ -39,3 +39,56 @@ def mostrar_produto(id_produto):
         if connection:
             cursor.close()
             connection.close()
+
+
+def atualizar_produto(id_produto, nome=None, marca=None, tamanho=None, cor=None, quantidade=None, preco=None,
+                      fornecedor_id=None):
+    """Atualiza as informações de um produto existente."""
+    connection = connect_to_database()
+    try:
+        cursor = connection.cursor()
+
+        # Constrói dinamicamente a query com os valores fornecidos
+        updates = []
+        values = []
+
+        if nome:
+            updates.append("nome = %s")
+            values.append(nome)
+        if marca:
+            updates.append("marca = %s")
+            values.append(marca)
+        if tamanho:
+            updates.append("tamanho = %s")
+            values.append(tamanho)
+        if cor:
+            updates.append("cor = %s")
+            values.append(cor)
+        if quantidade is not None:
+            updates.append("quantidade = %s")
+            values.append(quantidade)
+        if preco is not None:
+            updates.append("preco = %s")
+            values.append(preco)
+        if fornecedor_id:
+            updates.append("fornecedor_id = %s")
+            values.append(fornecedor_id)
+
+        # Se não houver nenhuma atualização a ser feita
+        if not updates:
+            print("Nenhum campo para atualizar.")
+            return
+
+        # Constrói a query final
+        query = f"UPDATE produtos SET {', '.join(updates)} WHERE id = %s"
+        values.append(id_produto)
+
+        cursor.execute(query, tuple(values))
+        connection.commit()
+        print("Produto atualizado com sucesso.")
+    except Exception as e:
+        print(f"Erro ao atualizar produto: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()

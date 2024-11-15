@@ -36,7 +36,21 @@ def main():
                     id_produto = int(input("ID do produto: "))
                     mostrar_produto(id_produto)
                 elif sub_choice == '3':
-                    pass
+                    id_produto = int(input("ID do produto a atualizar: "))
+                    nome = input("Novo nome (deixe em branco para não alterar): ")
+                    marca = input("Nova marca (deixe em branco para não alterar): ")
+                    tamanho = input("Novo tamanho (deixe em branco para não alterar): ")
+                    cor = input("Nova cor (deixe em branco para não alterar): ")
+                    quantidade = input("Nova quantidade (deixe em branco para não alterar): ")
+                    preco = input("Novo preço (deixe em branco para não alterar): ")
+                    fornecedor_id = input("Novo ID do fornecedor (deixe em branco para não alterar): ")
+
+                    quantidade = int(quantidade) if quantidade else None
+                    preco = float(preco) if preco else None
+                    fornecedor_id = int(fornecedor_id) if fornecedor_id else None
+
+                    atualizar_produto(id_produto, nome or None, marca or None, tamanho or None,
+                                      cor or None, quantidade, preco, fornecedor_id)
                 elif sub_choice == '4':
                     pass
                 elif sub_choice == '5':
