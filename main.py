@@ -86,7 +86,8 @@ def main():
 
                     atualizar_fornecedor(id_fornecedor, nome or None, telefone or None)
                 elif sub_choice == '4':
-                    pass
+                    id_fornecedor = int(input("ID do fornecedor a deletar: "))
+                    deletar_fornecedor(id_fornecedor)
                 elif sub_choice == '5':
                     pass
                 elif sub_choice == '6':

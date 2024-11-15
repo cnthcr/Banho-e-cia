@@ -70,3 +70,20 @@ def atualizar_fornecedor(id_fornecedor, nome=None, telefone=None):
         if connection:
             cursor.close()
             connection.close()
+
+def deletar_fornecedor(id_fornecedor):
+    """Deleta um fornecedor do banco de dados pelo ID."""
+    connection = connect_to_database()
+    try:
+        cursor = connection.cursor()
+        query = "DELETE FROM fornecedores WHERE id = %s"
+        cursor.execute(query, (id_fornecedor,))
+        connection.commit()
+        print("Fornecedor deletado com sucesso.")
+    except Exception as e:
+        print(f"Erro ao deletar fornecedor: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+
