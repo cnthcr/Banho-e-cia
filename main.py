@@ -1,5 +1,6 @@
 from produtos import *
 from fornecedores import *
+from vendas import *
 
 def main():
     while True:
@@ -12,7 +13,23 @@ def main():
         choice = input("Escolha uma opção: ")
         
         if choice == '1':
-            pass
+            while True:
+                print("\nMenu Vendas")
+                print("1. Realizar Venda")
+                print("2. Visualizar Top 5 Vendas")
+                print("3. Voltar")
+
+                sub_choice = input("Escolha uma opção: ")
+                if sub_choice == '1':
+                    id_produto = int(input("ID do produto: "))
+                    quantidade = int(input("Quantidade: "))
+                    realizar_venda(id_produto, quantidade)
+                elif sub_choice == '2':
+                    pass
+                elif sub_choice == '3':
+                    break
+                else:
+                    print("Opção inválida.")
         elif choice == '2':
             while True:
                 print("\nMenu Produtos")
