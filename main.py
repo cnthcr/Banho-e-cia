@@ -77,7 +77,8 @@ def main():
                     telefone = input("Telefone do fornecedor: ")
                     cadastrar_fornecedor(nome, telefone)
                 elif sub_choice == '2':
-                    pass
+                    id_fornecedor = int(input("ID do fornecedor: "))
+                    mostrar_fornecedor(id_fornecedor)
                 elif sub_choice == '3':
                     pass
                 elif sub_choice == '4':
