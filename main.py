@@ -33,7 +33,8 @@ def main():
                     fornecedor_id = int(input("ID do fornecedor: "))
                     cadastrar_produto(nome, marca, tamanho, cor, quantidade, preco, fornecedor_id)
                 elif sub_choice == '2':
-                    pass
+                    id_produto = int(input("ID do produto: "))
+                    mostrar_produto(id_produto)
                 elif sub_choice == '3':
                     pass
                 elif sub_choice == '4':
