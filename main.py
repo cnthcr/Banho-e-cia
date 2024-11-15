@@ -25,11 +25,12 @@ def main():
                     quantidade = int(input("Quantidade: "))
                     realizar_venda(id_produto, quantidade)
                 elif sub_choice == '2':
-                    pass
+                    visualizar_top_vendas()
                 elif sub_choice == '3':
                     break
                 else:
                     print("Opção inválida.")
+
         elif choice == '2':
             while True:
                 print("\nMenu Produtos")
@@ -78,6 +79,7 @@ def main():
                     break
                 else:
                     print("Opção inválida")
+
         elif choice == '3':
             while True:
                 print("\nMenu Fornecedores")

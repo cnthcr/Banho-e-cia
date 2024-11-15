@@ -27,3 +27,28 @@ def realizar_venda(id_produto, quantidade):
             cursor.close()
             connection.close()
 
+def visualizar_top_vendas():
+    connection = connect_to_database()
+    try:
+        cursor = connection.cursor()
+        query = """
+            SELECT p.nome, SUM(v.quantidade) AS total_vendido
+            FROM vendas v
+            JOIN produtos p ON v.id_produto = p.id
+            GROUP BY v.id_produto
+            ORDER BY total_vendido DESC
+            LIMIT 5
+        """
+        cursor.execute(query)
+        top_vendas = cursor.fetchall()
+        print("Top 5 Vendas:")
+        for venda in top_vendas:
+            print(f"Produto: {venda[0]}, Quantidade Vendida: {venda[1]}")
+    except Exception as e:
+        print(f"Erro ao visualizar top vendas: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+
+
