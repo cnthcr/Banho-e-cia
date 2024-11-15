@@ -1,4 +1,5 @@
 from produtos import *
+from fornecedores import *
 
 def main():
     while True:
@@ -52,14 +53,41 @@ def main():
                     atualizar_produto(id_produto, nome or None, marca or None, tamanho or None,
                                       cor or None, quantidade, preco, fornecedor_id)
                 elif sub_choice == '4':
-                    id_do_produto = int(input('Digite o id do produro: '))
+                    id_do_produto = int(input("Digite o id do produro: "))
                     deletar_produto(id_do_produto)
                 elif sub_choice == '5':
                     listar_produtos()
                 elif sub_choice == '6':
-                    pass
+                    break
+                else:
+                    print("Opção inválida")
         elif choice == '3':
-            pass
+            while True:
+                print("\nMenu Fornecedores")
+                print("1. Cadastrar Fornecedor")
+                print("2. Mostrar Fornecedor Específico")
+                print("3. Atualizar Fornecedor")
+                print("4. Deletar Fornecedor")
+                print("5. Listar Todos os Fornecedores")
+                print("6. Voltar")
+
+                sub_choice = input("Escolha uma opção: ")
+                if sub_choice == '1':
+                    nome = input("Nome do fornecedor: ")
+                    telefone = input("Telefone do fornecedor: ")
+                    cadastrar_fornecedor(nome, telefone)
+                elif sub_choice == '2':
+                    pass
+                elif sub_choice == '3':
+                    pass
+                elif sub_choice == '4':
+                    pass
+                elif sub_choice == '5':
+                    pass
+                elif sub_choice == '6':
+                    break
+                else:
+                    print("Opção inválida.")
         elif choice == '4':
             print("Saindo do sistema.")
             break
