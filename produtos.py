@@ -92,3 +92,19 @@ def atualizar_produto(id_produto, nome=None, marca=None, tamanho=None, cor=None,
         if connection:
             cursor.close()
             connection.close()
+
+def deletar_produto(id_produto):
+    """Deleta um produto do banco de dados pelo ID."""
+    connection = connect_to_database()
+    try:
+        cursor = connection.cursor()
+        query = "DELETE FROM produtos WHERE id = %s"
+        cursor.execute(query, (id_produto,))
+        connection.commit()
+        print("Produto deletado com sucesso.")
+    except Exception as e:
+        print(f"Erro ao deletar produto: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()

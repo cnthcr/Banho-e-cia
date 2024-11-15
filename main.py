@@ -52,9 +52,10 @@ def main():
                     atualizar_produto(id_produto, nome or None, marca or None, tamanho or None,
                                       cor or None, quantidade, preco, fornecedor_id)
                 elif sub_choice == '4':
-                    pass
+                    id_do_produto = int(input('Digite o id do produro: '))
+                    deletar_produto(id_do_produto)
                 elif sub_choice == '5':
-                    pass
+                    
                 elif sub_choice == '6':
                     pass
         elif choice == '3':
