@@ -89,7 +89,7 @@ def main():
                     id_fornecedor = int(input("ID do fornecedor a deletar: "))
                     deletar_fornecedor(id_fornecedor)
                 elif sub_choice == '5':
-                    pass
+                    listar_fornecedores()
                 elif sub_choice == '6':
                     break
                 else:

@@ -71,6 +71,7 @@ def atualizar_fornecedor(id_fornecedor, nome=None, telefone=None):
             cursor.close()
             connection.close()
 
+
 def deletar_fornecedor(id_fornecedor):
     """Deleta um fornecedor do banco de dados pelo ID."""
     connection = connect_to_database()
@@ -82,6 +83,26 @@ def deletar_fornecedor(id_fornecedor):
         print("Fornecedor deletado com sucesso.")
     except Exception as e:
         print(f"Erro ao deletar fornecedor: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
+            
+            
+def listar_fornecedores():
+    """Lista todos os fornecedores cadastrados no sistema."""
+    connection = connect_to_database()
+    try:
+        cursor = connection.cursor()
+        query = "SELECT * FROM fornecedores"
+        cursor.execute(query)
+        fornecedores = cursor.fetchall()
+        print("Fornecedores cadastrados:")
+        print("ID | Nome | Telefone")
+        for fornecedor in fornecedores:
+            print(f"{fornecedor[0]} | {fornecedor[1]} | {fornecedor[2]}")
+    except Exception as e:
+        print(f"Erro ao listar fornecedores: {e}")
     finally:
         if connection:
             cursor.close()
