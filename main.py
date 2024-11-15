@@ -55,7 +55,7 @@ def main():
                     id_do_produto = int(input('Digite o id do produro: '))
                     deletar_produto(id_do_produto)
                 elif sub_choice == '5':
-                    
+                    listar_produtos()
                 elif sub_choice == '6':
                     pass
         elif choice == '3':

@@ -108,3 +108,23 @@ def deletar_produto(id_produto):
         if connection:
             cursor.close()
             connection.close()
+
+
+def listar_produtos():
+    """Lista todos os produtos disponíveis no estoque."""
+    connection = connect_to_database()
+    try:
+        cursor = connection.cursor()
+        query = "SELECT * FROM produtos"
+        cursor.execute(query)
+        produtos = cursor.fetchall()
+        print("Produtos disponíveis no estoque:")
+        print("ID | Nome | Marca | Tamanho | Cor | Quantidade | Preço | Fornecedor ID")
+        for produto in produtos:
+            print(f"{produto[0]} | {produto[1]} | {produto[2]} | {produto[3]} | {produto[4]} | {produto[5]} | {produto[6]} | {produto[7]}")
+    except Exception as e:
+        print(f"Erro ao listar produtos: {e}")
+    finally:
+        if connection:
+            cursor.close()
+            connection.close()
